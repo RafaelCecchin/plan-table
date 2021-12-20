@@ -1,0 +1,23 @@
+{
+  "name": "pricing-table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w assets/style/scss -o assets/style"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelCecchin/pricing-table.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RafaelCecchin/pricing-table/issues"
+  },
+  "homepage": "https://github.com/RafaelCecchin/pricing-table#readme",
+  "dependencies": {
+    "node-sass": "^7.0.0"
+  }
+}

@@ -1,0 +1,159 @@
+.table {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    color: var(--color-grey);
+
+    .resources {
+        width: 20rem;
+        position: relative;
+        
+        .col {
+            z-index: 1;
+            background-color: var(--color-white);
+            border-radius: 1.2rem 0 0 1.2rem;
+
+            .data {
+                .data-header {
+                    span {
+                        position: relative;
+        
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            right: -1rem;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: .7rem;
+                            height: .7rem;
+                            background: url(../../assets/img/arrow.svg) no-repeat center center;
+                            transition: .4s;
+                            filter: var(--filter-grey);
+                        }
+                    }
+                }
+    
+                &.opened {
+                    .data-header {
+                        span {
+                            &:after {
+                                transform: translateY(-50%) rotate(90deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .plans {
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .col {
+            height: auto;
+            position: relative;
+            background-color: var(--color-white);
+           
+
+            &:nth-child(1) {
+                z-index: 2;
+            }
+
+            &:nth-child(2) {
+                z-index: 3;
+
+                .data-header {
+                    border-color: #87ecc7;
+                }
+            }
+
+            &:nth-child(3) {
+                z-index: 2;
+                border-radius: 0 1.2rem 1.2rem 0;
+            }
+            
+            .subdata {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                align-items: center;
+                justify-content: center;
+
+                &:after {
+                    content: "";
+                    width: 1rem;
+                    height: 1rem;
+                    display: block;
+                    
+                }
+
+                &.has-resource {
+                    &:after {
+                        background: url(../../assets/img/check.svg) no-repeat center center;
+                        filter: var(--filter-green-secondary);
+                    }
+                }
+
+                &.no-has {
+                    &:after {
+                        background: url(../../assets/img/cross.svg) no-repeat center center;
+                        filter: var(--filter-red);
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                .data-header {
+                    color: var(--color-green-secondary);
+                }
+
+
+            }
+
+            &:nth-child(2) {
+                .data-header {
+                    color: var(--color-white)
+                }
+
+                background-color: var(--color-green-primary);
+            }
+
+            &:nth-child(3) {
+                .data-header {
+                    color: var(--color-green-secondary);
+                }
+            }
+        }
+    }
+
+    .col {
+        box-shadow: 0 0 1rem rgba(0,0,0,.2);
+
+        .col-header {
+            height: 4rem;
+        }
+
+        .data {
+            overflow: hidden;
+            transition: max-height .4s;
+            
+    
+            .data-header {
+                padding: .4rem 1rem;
+                border-bottom: 0.1rem solid var(--color-light-grey);
+                margin-bottom: .5rem;
+            }
+    
+            .subdata {
+                min-height: 1.5rem;
+                padding: .4rem 1rem .4rem 2rem;
+            }
+    
+        } 
+    }
+
+    
+}

@@ -1,0 +1,12 @@
+:root {
+    --color-white: #fff;
+    --color-green-primary: #00e08f;
+    --color-green-secondary: #12d6a4;
+    --color-grey: #959595;
+    --color-light-grey: #f5f5f5;
+
+    --filter-green-primary: invert(54%) sepia(99%) saturate(954%) hue-rotate(113deg) brightness(101%) contrast(101%);
+    --filter-green-secondary: invert(89%) sepia(27%) saturate(5590%) hue-rotate(105deg) brightness(90%);
+    --filter-red: invert(55%) sepia(11%) saturate(5546%) hue-rotate(321deg) brightness(97%) contrast(123%);
+    --filter-grey: invert(58%) sepia(0%) saturate(53%) hue-rotate(166deg) brightness(101%) contrast(98%);
+}
