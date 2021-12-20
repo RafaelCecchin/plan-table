@@ -21,12 +21,12 @@ function updateDataHeight() {
 
         colPlanos.each(function () {
 
-            let recursosDoPlano = $(this).children();
-
+            let recursosDoPlano = $(this).find(".data");
+            console.log(recursosDoPlano);
             recursosDoPlano.each(function () {
     
                 let recursoDoPlano = $(this);
-                let indexRecursoDoPlano = recursoDoPlano.index();
+                let indexRecursoDoPlano = recursoDoPlano.index() - 1; // do not count the header
 
                 if (indexRecurso == indexRecursoDoPlano) {
                     recursoDoPlano.css("max-height", recursoHeight+"px");
@@ -54,7 +54,7 @@ function closeAllData() {
 
         colPlanos.each(function () {
 
-            let recursosDoPlano = $(this).children();
+            let recursosDoPlano = $(this).find(".data");
             
             recursosDoPlano.each(function () {
     
@@ -82,7 +82,7 @@ function collapseData() {
 
     colPlanos.each(function () {
 
-        let recursosDoPlano = $(this).children();
+        let recursosDoPlano = $(this).find(".data");
         let recursoAtual = recursosDoPlano.eq(index);
 
         recursoAtual.css("max-height", newRecursoHeight+"px");
@@ -103,3 +103,31 @@ table.ready(function() {
 
 recursos.on("click", collapseData);
 $(window).resize(updateDataHeight);
+
+/*$('.carrossel').slick({
+    dots: false,
+    infinite: false,
+    arrows: false,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+});*/

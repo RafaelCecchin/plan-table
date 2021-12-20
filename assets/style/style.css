@@ -5,7 +5,8 @@
   --color-green-secondary: #12d6a4;
   --color-grey: #959595;
   --color-light-grey: #f5f5f5;
-  --filter-green-primary: invert(54%) sepia(99%) saturate(954%) hue-rotate(113deg) brightness(101%) contrast(101%);
+  --color-black: #000000;
+  --filter-green-primary: invert(74%) sepia(75%) saturate(1250%) hue-rotate(74deg) brightness(96%) contrast(119%);
   --filter-green-secondary: invert(89%) sepia(27%) saturate(5590%) hue-rotate(105deg) brightness(90%);
   --filter-red: invert(55%) sepia(11%) saturate(5546%) hue-rotate(321deg) brightness(97%) contrast(123%);
   --filter-grey: invert(58%) sepia(0%) saturate(53%) hue-rotate(166deg) brightness(101%) contrast(98%); }
@@ -43,47 +44,105 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row;
-  color: var(--color-grey); }
+  color: var(--color-grey);
+  margin-top: 5rem;
+  overflow: hidden; }
   .table .resources {
-    width: 20rem;
+    padding: 7rem 0rem 4rem 1rem;
     position: relative; }
     .table .resources .col {
       z-index: 1;
       background-color: var(--color-white);
-      border-radius: 1.2rem 0 0 1.2rem; }
-      .table .resources .col .data .data-header span {
-        position: relative; }
-        .table .resources .col .data .data-header span:after {
-          content: "";
-          position: absolute;
-          right: -1rem;
-          top: 50%;
-          transform: translateY(-50%);
-          width: .7rem;
-          height: .7rem;
-          background: url(../../assets/img/arrow.svg) no-repeat center center;
-          transition: .4s;
-          filter: var(--filter-grey); }
+      border-radius: 1.2rem 0 0 1.2rem;
+      min-width: 15rem;
+      max-width: 15rem; }
+      .table .resources .col .data .data-header {
+        cursor: pointer; }
+        .table .resources .col .data .data-header span {
+          position: relative; }
+          .table .resources .col .data .data-header span:after {
+            content: "";
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: .7rem;
+            height: .7rem;
+            background: url(../../assets/img/arrow.svg) no-repeat center center;
+            transition: .4s;
+            filter: var(--filter-grey); }
       .table .resources .col .data.opened .data-header span:after {
         transform: translateY(-50%) rotate(90deg); }
   .table .plans {
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; }
+    padding: 7rem 1rem 4rem 1rem;
+    margin-left: -1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow-x: scroll;
+    position: relative;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; }
+    .table .plans::-webkit-scrollbar {
+      display: none; }
     .table .plans .col {
       height: auto;
       position: relative;
       background-color: var(--color-white); }
+      .table .plans .col .col-header {
+        border-bottom: 0.1rem solid var(--color-light-grey);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700; }
+      .table .plans .col .data .data-header {
+        text-align: center; }
+      .table .plans .col .col-footer {
+        justify-content: center;
+        display: flex;
+        padding: 0 .3rem; }
+        .table .plans .col .col-footer a {
+          text-decoration: none;
+          border: 2px solid var(--color-black);
+          color: var(--color-white);
+          background-color: var(--color-black);
+          padding: .4rem 1rem;
+          border-radius: 2rem;
+          transform: translateY(50%);
+          transition: background-color .4s;
+          text-align: center;
+          text-transform: uppercase;
+          font-size: 1rem; }
+          .table .plans .col .col-footer a:hover {
+            background-color: var(--color-white);
+            color: var(--color-black); }
       .table .plans .col:nth-child(1) {
-        z-index: 2; }
+        z-index: 2;
+        margin-top: -3rem;
+        border-radius: 1.2rem 0 0 1.2rem; }
+        .table .plans .col:nth-child(1) .col-header {
+          height: 3rem;
+          color: var(--color-green-secondary); }
       .table .plans .col:nth-child(2) {
-        z-index: 3; }
+        z-index: 3;
+        margin-top: -6rem;
+        border-radius: 1.2rem 1.2rem 0 0;
+        color: var(--color-white); }
         .table .plans .col:nth-child(2) .data-header {
+          border-color: #87ecc7; }
+        .table .plans .col:nth-child(2) .col-header {
+          height: 6rem;
+          border-color: #87ecc7; }
+        .table .plans .col:nth-child(2) .subdata {
           border-color: #87ecc7; }
       .table .plans .col:nth-child(3) {
         z-index: 2;
-        border-radius: 0 1.2rem 1.2rem 0; }
+        margin-top: -3rem;
+        border-radius: 0 1.2rem 1.2rem 0;
+        color: var(--color-green-secondary); }
+        .table .plans .col:nth-child(3) .col-header {
+          height: 3rem; }
       .table .plans .col .subdata {
         display: flex;
         flex-direction: column;
@@ -107,19 +166,22 @@ body {
         background-color: var(--color-green-primary); }
         .table .plans .col:nth-child(2) .data-header {
           color: var(--color-white); }
+        .table .plans .col:nth-child(2) .subdata.has-resource:after {
+          filter: var(--filter-green-primary); }
       .table .plans .col:nth-child(3) .data-header {
         color: var(--color-green-secondary); }
   .table .col {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2); }
-    .table .col .col-header {
-      height: 4rem; }
     .table .col .data {
       overflow: hidden;
       transition: max-height .4s; }
       .table .col .data .data-header {
-        padding: .4rem 1rem;
+        padding: .5rem 1rem;
         border-bottom: 0.1rem solid var(--color-light-grey);
         margin-bottom: .5rem; }
       .table .col .data .subdata {
         min-height: 1.5rem;
-        padding: .4rem 1rem .4rem 2rem; }
+        padding: .4rem 1rem .4rem 2rem;
+        border-bottom: 0.1rem solid var(--color-light-grey); }
+  .table .btn {
+    margin: auto; }
