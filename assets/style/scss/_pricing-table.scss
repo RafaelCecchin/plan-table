@@ -13,8 +13,12 @@
         left: 2rem;
 
         .arrows {
-            display: flex;
+            display: none;
             gap: .5rem;
+
+            @media screen and (max-width: 1050px) {
+                display: flex;
+            }
 
             .arrow {
                 width: 2rem;

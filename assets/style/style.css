@@ -72,8 +72,11 @@ body {
     top: 2rem;
     left: 2rem; }
     .table .control .arrows {
-      display: flex;
+      display: none;
       gap: .5rem; }
+      @media screen and (max-width: 1050px) {
+        .table .control .arrows {
+          display: flex; } }
       .table .control .arrows .arrow {
         width: 2rem;
         height: 2rem;
