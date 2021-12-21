@@ -9,7 +9,8 @@
   --filter-green-primary: invert(74%) sepia(75%) saturate(1250%) hue-rotate(74deg) brightness(96%) contrast(119%);
   --filter-green-secondary: invert(89%) sepia(27%) saturate(5590%) hue-rotate(105deg) brightness(90%);
   --filter-red: invert(55%) sepia(11%) saturate(5546%) hue-rotate(321deg) brightness(97%) contrast(123%);
-  --filter-grey: invert(58%) sepia(0%) saturate(53%) hue-rotate(166deg) brightness(101%) contrast(98%); }
+  --filter-grey: invert(58%) sepia(0%) saturate(53%) hue-rotate(166deg) brightness(101%) contrast(98%);
+  --filter-white: invert(1); }
 
 * {
   padding: 0;
@@ -19,6 +20,15 @@
 body {
   font-family: 'Exo', sans-serif;
   font-size: 1.2rem; }
+  @media screen and (max-width: 1050px) {
+    body {
+      font-size: 1.1rem; } }
+  @media screen and (max-width: 700px) {
+    body {
+      font-size: 1.0rem; } }
+  @media screen and (max-width: 550px) {
+    body {
+      font-size: .9rem; } }
 
 .only-semantics {
   padding: 0;
@@ -39,23 +49,68 @@ body {
   padding: 2rem;
   max-width: 1200px;
   margin: auto; }
+  @media screen and (max-width: 1050px) {
+    .container {
+      padding: 1.8rem; } }
+  @media screen and (max-width: 700px) {
+    .container {
+      padding: 1.4rem; } }
+  @media screen and (max-width: 550px) {
+    .container {
+      padding: 1rem; } }
 
 .table {
   width: 100%;
   display: flex;
   flex-direction: row;
   color: var(--color-grey);
-  margin-top: 5rem;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
+  .table .control {
+    z-index: 3;
+    position: absolute;
+    top: 2rem;
+    left: 2rem; }
+    .table .control .arrows {
+      display: flex;
+      gap: .5rem; }
+      .table .control .arrows .arrow {
+        width: 2rem;
+        height: 2rem;
+        border: 2px solid var(--color-black);
+        background-color: var(--color-white);
+        border-radius: .5rem;
+        transition: background-color .4s;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; }
+        .table .control .arrows .arrow:active {
+          background-color: var(--color-black); }
+          .table .control .arrows .arrow:active:after {
+            filter: var(--filter-white); }
+        .table .control .arrows .arrow:after {
+          content: "";
+          position: relative;
+          width: 1.8rem;
+          height: 1.8rem;
+          background: url(../../assets/img/arrow.svg) no-repeat center center;
+          transition: .4s; }
+          @media screen and (max-width: 550px) {
+            .table .control .arrows .arrow:after {
+              display: block; } }
+        .table .control .arrows .arrow.left-arrow:after {
+          transform: rotate(180deg); }
   .table .resources {
     padding: 7rem 0rem 4rem 1rem;
     position: relative; }
     .table .resources .col {
       z-index: 1;
       background-color: var(--color-white);
-      border-radius: 1.2rem 0 0 1.2rem;
-      min-width: 15rem;
-      max-width: 15rem; }
+      border-radius: 1.2rem 0 0 1.2rem; }
       .table .resources .col .data .data-header {
         cursor: pointer; }
         .table .resources .col .data .data-header span {
@@ -101,8 +156,8 @@ body {
       .table .plans .col .col-footer {
         justify-content: center;
         display: flex;
-        padding: 0 .3rem; }
-        .table .plans .col .col-footer a {
+        padding: 0 1.1rem; }
+        .table .plans .col .col-footer .btn {
           text-decoration: none;
           border: 2px solid var(--color-black);
           color: var(--color-white);
@@ -113,10 +168,35 @@ body {
           transition: background-color .4s;
           text-align: center;
           text-transform: uppercase;
-          font-size: 1rem; }
-          .table .plans .col .col-footer a:hover {
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 5rem; }
+          @media screen and (max-width: 700px) {
+            .table .plans .col .col-footer .btn {
+              border-radius: 1.5rem; } }
+          @media screen and (max-width: 550px) {
+            .table .plans .col .col-footer .btn {
+              width: 75%;
+              font-size: 0; } }
+          .table .plans .col .col-footer .btn:hover, .table .plans .col .col-footer .btn:active, .table .plans .col .col-footer .btn:focus {
             background-color: var(--color-white);
             color: var(--color-black); }
+            .table .plans .col .col-footer .btn:hover:after, .table .plans .col .col-footer .btn:active:after, .table .plans .col .col-footer .btn:focus:after {
+              filter: unset; }
+          .table .plans .col .col-footer .btn:after {
+            content: "";
+            position: relative;
+            display: none;
+            width: 1.6rem;
+            height: 1.6rem;
+            background: url(../../assets/img/shop.svg) no-repeat center center;
+            transition: .4s;
+            filter: var(--filter-white); }
+            @media screen and (max-width: 550px) {
+              .table .plans .col .col-footer .btn:after {
+                display: block; } }
       .table .plans .col:nth-child(1) {
         z-index: 2;
         margin-top: -3rem;

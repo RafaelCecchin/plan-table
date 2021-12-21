@@ -3,8 +3,70 @@
     display: flex;
     flex-direction: row;
     color: var(--color-grey);
-    margin-top: 5rem;
     overflow: hidden;
+    position: relative;
+
+    .control {
+        z-index: 3;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+
+        .arrows {
+            display: flex;
+            gap: .5rem;
+
+            .arrow {
+                width: 2rem;
+                height: 2rem;
+                border: 2px solid var(--color-black);
+                background-color: var(--color-white);
+                border-radius: .5rem;
+                transition: background-color .4s;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                
+                &:active {
+                    background-color: var(--color-black);
+
+                    &:after {
+                        filter: var(--filter-white);
+                    }
+                }
+
+                &:after {
+                    content: "";
+                    position: relative;
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    background: url(../../assets/img/arrow.svg) no-repeat center center;
+                    transition: .4s;
+
+                    @media screen and (max-width: 550px) {
+                        display: block;
+                    }
+                }
+                    
+                &.left-arrow {
+                    &:after {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                &.right-arrow {
+                    &:after {
+
+                    }
+                }
+            }
+
+        }
+    }
 
     .resources {
         padding: 7rem 0rem 4rem 1rem;
@@ -14,8 +76,6 @@
             z-index: 1;
             background-color: var(--color-white);
             border-radius: 1.2rem 0 0 1.2rem;
-            min-width: 15rem;
-            max-width: 15rem;
 
             .data {
                 .data-header {
@@ -91,9 +151,9 @@
             .col-footer {
                 justify-content: center;
                 display: flex;
-                padding: 0 .3rem;
+                padding: 0 1.1rem;
 
-                a {
+                .btn {
                     text-decoration: none;
                     border: 2px solid var(--color-black);
                     color: var(--color-white);
@@ -105,13 +165,44 @@
                     text-align: center;
                     text-transform: uppercase;
                     font-size: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 5rem;
 
-                    &:hover {
+                    @media screen and (max-width: 700px) {
+                        border-radius: 1.5rem;
+                    }
+
+                    @media screen and (max-width: 550px) {
+                        width: 75%;
+                        font-size: 0;
+                    }
+
+                    &:hover, &:active, &:focus {
                         background-color: var(--color-white);
                         color: var(--color-black);
+
+                        &:after {
+                            filter: unset;
+                        }
+                    }
+
+                    &:after {
+                        content: "";
+                        position: relative;
+                        display: none;
+                        width: 1.6rem;
+                        height: 1.6rem;
+                        background: url(../../assets/img/shop.svg) no-repeat center center;
+                        transition: .4s;
+                        filter: var(--filter-white);
+
+                        @media screen and (max-width: 550px) {
+                            display: block;
+                        }
                     }
                 }
-
             }
 
             &:nth-child(1) {
