@@ -53,13 +53,15 @@ function updateDataSize() {
 
                 if (indexRecurso == indexRecursoDoPlano) {
                     recursoDoPlano.css("max-height", recursoHeight+"px");
+
+                    let linhasPlanos = recursoDoPlano.children();
+                
+                    linhasPlanos.each(function ( index ) {
+                        $(this).innerHeight( linhasRecursos.eq(index).innerHeight() );
+                    });
                 }
                 
-                let linhasPlanos = recursoDoPlano.children();
                 
-                linhasPlanos.each(function ( index ) {
-                    $(this).innerHeight( linhasRecursos.eq(index).innerHeight() );
-                });
             });
         });
     });
